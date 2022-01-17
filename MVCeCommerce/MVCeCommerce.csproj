@@ -181,10 +181,14 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Members\Login.cshtml" />
+    <Content Include="Views\Members\Register.cshtml" />
+    <Content Include="Views\Members\RegisterResult.cshtml" />
+    <Content Include="Views\Members\ChangePassword.cshtml" />
+    <Content Include="Views\Members\EmailValidate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Members\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
