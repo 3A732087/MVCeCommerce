@@ -1,0 +1,41 @@
+﻿@model MVCeCommerce.ViewModel.ItemDetailViewModel
+
+<table>
+    <tr>
+        @*顯示商品圖片*@
+        <td>
+            <img width="100" src="@Html.Encode(Url.Content("~/Upload/" + Model.Data.Image))" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayNameFor(Model => Model.Data.Name)
+            @Html.ActionLink(Model.Data.Name, "Item", new { Id = Model.Data.Id })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @*判斷是否登入*@
+            @*無登入無法使用*@
+            @if (User.Identity.IsAuthenticated)
+            {
+                @*判斷商品是否於購物車中*@
+                if (Model.InCart)
+                {
+                    <text>已經於購物車中，從購物車中</text>
+                    @Ajax.ActionLink("取出", "Pop", "Cart", new { Id = Model.Data.Id, toPage = "ItemBlock" }, new AjaxOptions { UpdateTargetId = "ItemBlock" + Model.Data.Id, InsertionMode = InsertionMode.Replace }, new { @class = "btn btn-warning" })
+                }
+                else
+                {
+                    @Ajax.ActionLink("放入購物車", "Put", "Cart", new { Id = Model.Data.Id, toPage = "ItemBlock" }, new AjaxOptions { UpdateTargetId = "ItemBlock" + Model.Data.Id, InsertionMode = InsertionMode.Replace }, new { @class = "btn btn-primary" })
+
+                }
+
+                if (User.IsInRole("Admin"))
+                {
+                    @Html.ActionLink("刪除商品", "Delete", new { Id = Model.Data.Id }, new { @class = "btn btn-danger")
+                }
+            }
+        </td>
+    </tr>
+</table>
