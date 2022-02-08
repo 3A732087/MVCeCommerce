@@ -141,6 +141,7 @@
     <Compile Include="Security\JwtService.cs" />
     <Compile Include="Services\CartService.cs" />
     <Compile Include="Services\ForPaging.cs" />
+    <Compile Include="Services\ItemService.cs" />
     <Compile Include="Services\MailService.cs" />
     <Compile Include="Services\MembersDBService.cs" />
     <Compile Include="ViewModel\CartBuyViewModel.cs" />
