@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 
@@ -11,10 +12,13 @@ namespace MVCeCommerce.Models
 
         public int M_Id { get; set; }
 
+        [DisplayName("留言帳號：")]
         public string Account { get; set; }
 
+        [DisplayName("留言內容：")]
         public string Content { get; set; }
 
+        [DisplayName("留言時間：")]
         public DateTime CreateTime { get; set; }
 
         public Members Member { get; set; } = new Members();
