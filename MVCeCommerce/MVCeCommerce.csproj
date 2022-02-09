@@ -169,6 +169,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="jQuery\Article\Article.js" />
+    <Content Include="jQuery\Article\ArticleList.js" />
+    <Content Include="jQuery\Message\MessageList.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -207,10 +210,18 @@
     <Content Include="Views\Item\Item.cshtml" />
     <Content Include="Views\Item\ItemBlock.cshtml" />
     <Content Include="Views\Item\Create.cshtml" />
+    <Content Include="Views\Blog\Index.cshtml" />
+    <Content Include="Views\Blog\Article.cshtml" />
+    <Content Include="Views\Blog\CreateArticle.cshtml" />
+    <Content Include="Views\Blog\EditArticle.cshtml" />
+    <Content Include="Views\Blog\ArticleList.cshtml" />
+    <Content Include="Views\Blog\ShowPopularity.cshtml" />
+    <Content Include="Views\Blog\Message.cshtml" />
+    <Content Include="Views\Blog\MessageList.cshtml" />
+    <Content Include="Views\Blog\CreateMessage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Blog\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

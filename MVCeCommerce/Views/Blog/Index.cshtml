@@ -1,0 +1,85 @@
+﻿@model MVCeCommerce.ViewModel.BlogViewModel
+@{
+    ViewBag.Title = Model.Member.Name + "的部落格";
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/jQuery/Article/ArticleList.js")
+}
+
+<style>
+    #DataList, #form1 {
+        margin-top: 20px;
+    }
+
+    .body-content {
+        width: 100% !important;
+    }
+
+    .btn-default {
+        width: 80%;
+    }
+</style>
+
+<div class="page-header">
+    <h1>@Html.ActionLink(Model.Member.Name + "的部落格", "Index", new { Account = Model.Member.Account })</h1>
+</div>
+
+<div id="BlogBlock">
+    <div id="LeftBlock" class="col-md-8 col-lg-8 col-sm-8">
+        @*------- 人氣文 start -------*@
+        <div id="PopularityListBlock">
+            @Html.Action("ShowPopularity", "Blog", new { Account = Model.Member.Account })
+        </div>
+        @*------- 人氣文 end-------*@
+
+        @*------- 文章列表 -------*@
+        <div id="ArticleListBlock">
+            @Html.Action("ArticleList", "Blog", new { Account = Model.Member.Account })
+        </div>
+        @*------- 文章列表 end-------*@
+    </div>
+
+
+    <div id="RightBlock" class="col-md-4 col-lg-4 col-sm-4">
+        <table>
+            <tr>
+                <td>
+                    <img src="@Html.Encode(Url.Content("~/Upload/Members/" + Model.Member.Image))" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <h4>@Html.DisplayNameFor(model => model.Member.Name)：@Model.Member.Name  </h4>
+                </td>
+            </tr>
+        </table>
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            if (User.Identity.Name == Model.Member.Account)
+            {
+                @Ajax.ActionLink("新增文章", "CreateArticle", "Blog", null, new AjaxOptions { UpdateTargetId = "CreateArticleModal", InsertionMode = InsertionMode.Replace }, new { @class = "btn btn-primary", @data_toggle = "modal", @data_target = "#CreateArticleModal" })
+
+                <div class="modal fade" id="CreateArticleModal" tabindex="-1" role="dialog" aria-labelledby="CreateArticleModalLabel" aria-hidden="true">
+
+                </div>
+            }
+            else
+            {
+                <text>非該部落格特有人，請回自己的</text>
+                @Html.ActionLink("部落格", "Index", new { Account = User.Identity.Name })
+                <text>進行編輯</text>
+            }
+        }
+        else
+        {
+            <text>愈新增文章請先</text>
+            @Html.ActionLink("登入", "Login", "Members")
+        }
+    </div>
+
+</div>
