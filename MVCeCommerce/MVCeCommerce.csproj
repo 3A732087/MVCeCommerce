@@ -146,6 +146,7 @@
     <Compile Include="Services\ItemService.cs" />
     <Compile Include="Services\MailService.cs" />
     <Compile Include="Services\MembersDBService.cs" />
+    <Compile Include="Services\MessageDBService.cs" />
     <Compile Include="ViewModel\ArticleIndexViewModel.cs" />
     <Compile Include="ViewModel\ArticleViewModel.cs" />
     <Compile Include="ViewModel\BlogViewModel.cs" />
