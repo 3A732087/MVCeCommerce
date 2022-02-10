@@ -123,6 +123,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AlbumController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -163,6 +164,7 @@
     <Compile Include="ViewModel\MessageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\AlbumCarousel.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -171,9 +173,13 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="jQuery\Album\AlbumCarousel.js" />
+    <Content Include="jQuery\Album\AlbumList.js" />
     <Content Include="jQuery\Article\Article.js" />
     <Content Include="jQuery\Article\ArticleList.js" />
     <Content Include="jQuery\Message\MessageList.js" />
+    <Content Include="Scripts\additional-methods.js" />
+    <Content Include="Scripts\additional-methods.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -221,6 +227,10 @@
     <Content Include="Views\Blog\Message.cshtml" />
     <Content Include="Views\Blog\MessageList.cshtml" />
     <Content Include="Views\Blog\CreateMessage.cshtml" />
+    <Content Include="Views\Album\Index.cshtml" />
+    <Content Include="Views\Album\List.cshtml" />
+    <Content Include="Views\Album\Create.cshtml" />
+    <Content Include="Views\Album\Carousel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
