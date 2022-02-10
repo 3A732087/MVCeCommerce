@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "相簿首頁";
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/jQuery/Album/AlbumList.js")
+}
+<div class="page-header">
+    <h1>相簿</h1>
+</div>
+@*顯示圖片區塊，預設隱藏*@
+<div class="col-xs-12 text-center hidden" id="showImgBlock">
+    <img id="showImg" src="" style="max-width: 100%;" />
+</div>
+@*載入上傳圖片表單內容*@
+@Html.Action("Create", "Album")
+@*載入圖片列表內容*@
+<div id="AlbumListBlock">
+    @Html.Action("List", "Album")
+</div>
