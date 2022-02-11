@@ -41,6 +41,7 @@ namespace MVCeCommerce.Controllers
             return PartialView(Data);
         }
 
+        [HttpPost]
         public ActionResult GetDataList([Bind(Include ="Search")]HomeViewModel Data)
         {
             return RedirectToAction("GetDataList", new { Search = Data.Search });
