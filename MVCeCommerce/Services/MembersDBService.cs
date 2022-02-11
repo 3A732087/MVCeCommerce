@@ -23,7 +23,7 @@ namespace MVCeCommerce.Services
             //密碼Hash
             newMember.Password = HashPassword(newMember.Password);
 
-            string sql = $@"INSERT INTO Member (Account, Password, Name, Image, Email, AuthCode, IsAdmin) VALUES ('{newMember.Account}','{newMember.Password}','{newMember.Name}','{newMember.Image}','{newMember.Email}','{newMember.AuthCode}','0')";
+            string sql = $@"INSERT INTO Members (Account, Password, Name, Image, Email, AuthCode, IsAdmin) VALUES ('{newMember.Account}','{newMember.Password}','{newMember.Name}','{newMember.Image}','{newMember.Email}','{newMember.AuthCode}','0')";
 
             try
             {
@@ -66,7 +66,7 @@ namespace MVCeCommerce.Services
         private Members GetDataByAccount(string Account)
         {
             Members Data = new Members();
-            string sql = $@"SELECT * FROM Member WHERE Account = '{Account}'";
+            string sql = $@"SELECT * FROM Members WHERE Account = '{Account}'";
 
             try
             {
@@ -111,7 +111,7 @@ namespace MVCeCommerce.Services
         public Members GetDatabyAccount(string Account)
         {
             Members Data = new Members();
-            string sql = $@"SELECT * FROM Member WHERE Account = '{Account}'";
+            string sql = $@"SELECT * FROM Members WHERE Account = '{Account}'";
 
             try
             {
@@ -151,7 +151,7 @@ namespace MVCeCommerce.Services
                 if (ValidateMeber.AuthCode == AuthCode)
                 {
                     //驗證碼相同設空
-                    string sql = $@"UPDATE Member set AuthCode = '{string.Empty}' where Account = '{Account}'";
+                    string sql = $@"UPDATE Members set AuthCode = '{string.Empty}' where Account = '{Account}'";
                     try
                     {
                         conn.Open();
@@ -234,7 +234,7 @@ namespace MVCeCommerce.Services
             {
                 LoginMember.Password = HashPassword(newPassword);
 
-                string sql = $@"UPDATE Member  SET Password = '{LoginMember.Password}' WHERE Account = '{Account}'";
+                string sql = $@"UPDATE Members  SET Password = '{LoginMember.Password}' WHERE Account = '{Account}'";
 
                 try
                 {

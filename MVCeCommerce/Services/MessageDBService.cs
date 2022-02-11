@@ -101,7 +101,7 @@ namespace MVCeCommerce.Services
         public void InsertMessage(Message newData)
         {
             newData.M_Id = LastMessageFinder(newData.A_Id);
-            string sql = $@" INSERT INTO Article(A_Id, M_Id,  Account, Content, CreateTime) VALUES ({newData.A_Id}, '{newData.M_Id}','{newData.Content}','{DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss")}')";
+            string sql = $@" INSERT INTO Message(A_Id, M_Id,  Account, Content, CreateTime) VALUES ({newData.A_Id}, {newData.M_Id},'{newData.Account}','{newData.Content}','{DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss")}')";
 
             try
             {

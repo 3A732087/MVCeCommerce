@@ -21,7 +21,7 @@ namespace MVCeCommerce.Services
         {
             Article Data = new Article();
 
-            string sql = $@" select m.*, d.Name, d.Image, from Article m inner join Members b on m.Account = d.Account where m.A_Id = '{A_Id}'";
+            string sql = $@" select m.*, d.Name, d.Image from Article m inner join Members d on m.Account = d.Account where m.A_Id = {A_Id}";
 
             try
             {
@@ -315,7 +315,7 @@ namespace MVCeCommerce.Services
 
             string DeleteArticle = $@" delete from Article where A_Id = {A_Id}";
 
-            string CombinSql = DeleteMessage + DeleteMessage;
+            string CombinSql = DeleteMessage + DeleteArticle;
 
             try
             {
