@@ -14,7 +14,7 @@ namespace MVCeCommerce.Models
 
         [DisplayName("商品名稱")]
         [Required(ErrorMessage = "請輸入商品名稱")]
-        [StringLength(50,ErrorMessage ="商品名稱不得大於50字元"]
+        [StringLength(50,ErrorMessage ="商品名稱不得大於50字元")]
         public string Name { get; set; }
 
         [DisplayName("價格")]
