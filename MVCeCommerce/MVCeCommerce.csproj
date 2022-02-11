@@ -155,6 +155,7 @@
     <Compile Include="ViewModel\ArticleViewModel.cs" />
     <Compile Include="ViewModel\BlogViewModel.cs" />
     <Compile Include="ViewModel\CartBuyViewModel.cs" />
+    <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\ItemCreateViewModel.cs" />
     <Compile Include="ViewModel\ItemDetailViewModel.cs" />
     <Compile Include="ViewModel\ItemViewModel.cs" />
