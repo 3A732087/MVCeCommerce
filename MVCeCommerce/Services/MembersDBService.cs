@@ -287,5 +287,152 @@ namespace MVCeCommerce.Services
             return false;
         }
         #endregion
+
+        #region 查詢陣列資料
+        public List<Members> GetDataList(ForPaging Paging, string Search)
+        {
+            List<Members> DataList = new List<Members>();
+            if (!string.IsNullOrWhiteSpace(Search))
+            {
+                SetMaxPaging(Paging, Search);
+                DataList = GetAllDataList(Paging, Search);
+            }
+            else
+            {
+                SetMaxPaging(Paging);
+                DataList = GetAllDataList(Paging);
+
+            }
+            return DataList;
+
+        }
+
+        //無搜尋值
+        public List<Members> GetAllDataList(ForPaging paging)
+        {
+            List<Members> DataList = new List<Members>();
+
+            string sql = $@" select * from (select row_number() over(order by Account) as sort, * from Members ) m where m.sort Between {(paging.NowPage - 1) * paging.ItemNum + 1} and {paging.NowPage * paging.ItemNum}";
+
+            try
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    Members Data = new Members();
+                    Data.Account = dr["Account"].ToString();
+                    Data.Name = dr["Name"].ToString();
+                    DataList.Add(Data);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return DataList;
+        }
+
+        //有搜尋值
+        public List<Members> GetAllDataList(ForPaging paging, string Search)
+        {
+            List<Members> DataList = new List<Members>();
+
+            string sql = $@" select * from (select row_number() over(order by Account) as sort, * from Members where Account like '%{Search}%' or Name like '%{Search}%') m where m.sort Between {(paging.NowPage - 1) * paging.ItemNum + 1} and {paging.NowPage * paging.ItemNum}";
+
+            try
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    Members Data = new Members();
+                    Data.Account = dr["Account"].ToString();
+                    Data.Name = dr["Name"].ToString();
+                    DataList.Add(Data);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return DataList;
+        }
+
+        //設定最大頁數
+        public void SetMaxPaging(ForPaging Paging)
+        {
+            //計算列數
+            int Row = 0;
+
+            string sql = $@"select * from Members";
+            try
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(sql, conn);
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    Row++;
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
+            //計算所需的總頁數
+            Paging.MaxPage = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(Row) / Paging.ItemNum));
+            Paging.SetRightPage();
+        }
+
+        //有搜尋值設定最大頁數
+        public void SetMaxPaging(ForPaging Paging, string Search)
+        {
+            //計算列數
+            int Row = 0;
+
+            string sql = $@"select * from Members where Account like '%{Search}%' or Name like '%{Search}%'";
+            try
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(sql, conn);
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    Row++;
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
+            //計算所需的總頁數
+            Paging.MaxPage = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(Row) / Paging.ItemNum));
+            Paging.SetRightPage();
+        }
+
+        #endregion
     }
 }
