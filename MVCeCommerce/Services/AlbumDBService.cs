@@ -23,7 +23,7 @@ namespace MVCeCommerce.Services
         {
             Album Data = new Album();
 
-            string sql = $@"select m.* d.Name from Album m inner join Members d on m.Account = d.Account where m.Alb_Id = {Alb_Id}";
+            string sql = $@"select m.* , d.Name from Album m inner join Members d on m.Account = d.Account where m.Alb_Id = {Alb_Id}";
 
             try
             {

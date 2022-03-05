@@ -117,7 +117,7 @@ namespace MVCeCommerce.Services
         {
             newData.Id = LastItemFinder();
 
-            string sql = $@"insert into Item(Id, Name, Price, Image) VALUES ({newData.Id},'{newData.Name}', '{newData.Price}','{newData.Image}'";
+            string sql = $@"insert into Item(Id, Name, Price, Image) VALUES ({newData.Id},'{newData.Name}', '{newData.Price}','{newData.Image}')";
             try
             {
                 conn.Open();

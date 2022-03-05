@@ -33,6 +33,6 @@ namespace MVCeCommerce.Models
 
         //Members資料表(外來鍵)
         //預設時將Members物件建立完畢
-        public Members Member {get;set;}
+        public Members Member { get; set; } = new Members();
     }
 }
