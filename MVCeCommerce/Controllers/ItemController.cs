@@ -77,8 +77,8 @@ namespace MVCeCommerce.Controllers
                 //將檔案存在伺服器
                 Data.ItemImage.SaveAs(Url);
                 //設定路徑
-                Data.NewDate.Image = fileName;
-                itemService.Insert(Data.NewDate);
+                Data.NewData.Image = fileName;
+                itemService.Insert(Data.NewData);
                 return RedirectToAction("Index", "Home");
             }
             else

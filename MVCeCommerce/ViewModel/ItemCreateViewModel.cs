@@ -16,7 +16,7 @@ namespace MVCeCommerce.ViewModel
         public HttpPostedFileBase ItemImage { get; set; }
 
         //新增商品內容
-        public Item NewDate { get; set; }
+        public Item NewData { get; set; }
 
     }
 }
